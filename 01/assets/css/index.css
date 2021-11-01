@@ -1,0 +1,451 @@
+html,
+body,
+dl,
+dt,
+dd,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+p,
+fieldset,
+legend,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #353535;
+    font: 16px/1.5 'Microsoft Yahei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+    html[resize] body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1930px) {
+    html[resize] body {
+        font-size: 18px;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+/* - 滚动条 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track:hover {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .05);
+}
+
+.wrap {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 0 1.25em;
+    box-sizing: content-box;
+}
+
+.wrap.min {
+    max-width: 800px;
+}
+
+.wrap.mid {
+    max-width: 1000px;
+}
+
+.wrap.max {
+    max-width: 1600px;
+}
+
+.wrap.full {
+    max-width: 100%;
+}
+
+.wrap.thin {
+    padding: 0 .75em;
+}
+
+.wrap.thick {
+    padding: 0 1.5em;
+}
+
+.wrap.clear {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.overflow {
+    overflow:auto;
+}
+
+
+h1 {
+    font-size: 2em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child,
+p:last-child {
+    margin-bottom: 0;
+}
+
+p {
+    line-height: 1.8em;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ffc670;
+}
+
+
+
+img,
+svg,
+video {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+/* - 分割线 */
+hr {
+    border: 0;
+    margin: 1.5em 0;
+    border-top: 1px rgba(0, 0, 0, 0.5) solid;
+}
+
+hr.light {
+    border-top: 1px rgba(255, 255, 255, 0.5) solid;
+}
+
+
+/*主体布局*/
+.theme-container {
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: 60px auto 60px;
+    grid-template-areas:
+        "h h "
+        "m c "
+        "m f";
+    height: auto;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    grid-area: h;
+    height: 60px;
+    position: fixed;
+    z-index: 1;
+    ;
+}
+
+aside {
+    grid-area: m;
+    position: fixed;
+    top: 60px;
+    width: 250px;
+}
+
+main {
+    grid-area: c;
+    top: 60px;
+    left: 250px;
+}
+
+footer {
+    grid-area: f; 
+    height: 60px;
+    width: 100%; 
+}
+
+
+
+
+
+/* 1 - 页眉*/
+.theme-container .sidebar-main {
+    color: #fff;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-color:lightblue
+}
+
+/* - 侧边栏 */
+.theme-container .sidebar {
+    top: 60px;
+    height: 578px;
+    color: #fff;
+    width: 250px;
+    position:fixed;
+    overflow: hidden;
+    background-color:lightsteelblue;
+}
+
+.theme-container .page {
+    top: 0px;
+    left: 250px;
+    bottom: auto;
+    width: 680px;
+    color: black;
+    background-color: white;
+}
+
+/* -- 头像 */
+.theme-container .sidebar .avatar {
+    width: 160px;
+    height: 160px;
+    margin: 2em auto;
+    background: #fff;
+    border-radius: 100%;
+    border: #fff 5px solid;
+    transition: transform 0.5s;
+}
+
+.theme-container .sidebar .avatar:hover {
+    transform: rotate(1turn);
+}
+
+.theme-container .sidebar .avatar img {
+    border-radius: 100%;
+}
+
+/* -- 上边栏导航 */
+.theme-container .sidebar-main .nav {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    flex-direction:row;
+    margin-left: 400px;
+}
+
+.theme-container .sidebar-main .nav a {
+    color: #fff;
+    padding: 1em;
+    display: block;
+    text-align: center;
+    width: 120px;
+    transition: background .3s, box-shadow .3s;
+}
+
+.theme-container .sidebar-main .nav a:hover {
+    background: rgba(0, 0, 0, .2);
+}
+    
+/* -- 侧边栏导航 */
+.theme-container .sidebar .nav {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+}
+
+.theme-container .sidebar .nav a {
+    color: #fff;
+    padding: 1em;
+    display: block;
+    text-align: center;
+    transition: background .3s, box-shadow .3s;
+}
+
+.theme-container .sidebar .nav a:hover {
+    background: rgba(0, 0, 0, .2);
+}
+
+
+@media screen and (max-width: 900px) {
+    .sidebar {
+        width: inherit;
+        position: relative;
+    }
+
+    .sidebar .nav {
+        background: #f8bd24;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .sidebar .nav a:hover {
+        background: none;
+        box-shadow: 0 -3px 0 #fff inset;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}
+
+@media print {
+    .sidebar {
+        display: none;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}
+
+.page section {
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-bottom: 60px;
+    height: 570px;
+    left: 250px;
+    position:inherit;
+}
+
+@media screen and (max-width: 900px) {
+    main section {
+        padding: 3em 0;
+    }
+}
+
+
+.title {
+    margin-bottom: 10px;
+    font-family: "FontAwesome";
+}
+
+
+
+.theme-container footer {
+    color: #fff;
+    padding-top: 0px;
+    text-align: center;
+    background: #72655b;
+    margin-left: 0;
+    height: 60px;
+    width: 980;
+}
+
+footer p{
+    margin-top: 18px;
+}
+
+footer a {
+    color: inherit;
+}
+
+.col-12 {
+    display: grid;
+    grid-template-columns: repeat(50%);
+    grid-template-rows: 100%;
+    grid-template-areas: "c1 c2 ";
+    height: 300px;
+    width: 600px;
+}
+
+.col-1-1 {
+    grid-area: c1;
+}
+
+.col-1-2 {
+    grid-area: c2;
+}
+
+.col-23 {
+    display: grid;
+    grid-template-columns: repeat(33.3%);
+    grid-template-rows: 50% 50%;
+    grid-template-areas: "c11 c12 c13"
+    "c21 c22 c23";
+    height: 500px;
+    width: 800px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.col-23 img{
+    height: 170px;
+    width: auto;
+    border-color: khaki;
+    border-width: 10px;
+    border-style: solid;
+}
+
+.col-c11 {
+    grid-area: c11;
+}
+
+.col-c12 {
+    grid-area: c12;
+}
+
+.col-c13 {
+    grid-area: c13;
+}
+
+.col-c21 {
+    grid-area: c21;
+}
+
+.col-c22 {
+    grid-area: c22;
+}
+
+.col-c23 {
+    grid-area: c23;
+}
+
+.page .wrap{
+    height: 400px;
+}
+
+.title-h2{
+    text-align: center;
+}
+
