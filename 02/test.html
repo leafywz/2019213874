@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        th {
+            border: 1px solid black;
+            background-color: lightblue;
+        }
+        
+        td {
+            border: 1px solid black;
+            background-color: azure;
+        }
+    </style>
+</head>
+ 
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        /*创建学生信息数组*/
+        var datas = [{
+            name: '黄磊',
+            subject: '数学',
+            score: 100
+        }, {
+            name: '何炅',
+            subject: '数学',
+            score: 98
+        }, {
+            name: '彭彭',
+            subject: '数学',
+            score: 60
+        }, {
+            name: '妹妹',
+            subject: '数学',
+            score: 0
+        }];
+ 
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr); //创建行
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td); //创建列
+            }
+ 
+            /*删除行*/
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:">删除</a>';
+            tr.appendChild(td); //创建删除列
+        }
+
+        var as = document.querySelectorAll('a');
+            for (var j = 0; j < as.length; j++) {
+                as[j].onclick = function() {
+                    // 点击a 删除 当前a 所在的行(链接的爸爸的爸爸)  node.removeChild(child)  
+                    tbody.removeChild(this.parentNode.parentNode)
+                }
+            }
+    </script>
+</body>
+ 
+ 
+</html>
