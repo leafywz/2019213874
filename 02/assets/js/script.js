@@ -238,7 +238,7 @@ window.onload = function () {
 
   // 当前问题,将课程详细内容也加载到显示位置，同时完善显示的 css 设置 
   // 鼠标移动响应事件处理
-  function MoveOver(i) {
+  function MouseOver(i) {
     const titleName = document.getElementsByClassName("details-title");
     let h2 = document.createElement('h2');
     h2.textContent = lesson[i].course;
@@ -253,7 +253,7 @@ window.onload = function () {
     bq.textContent += lesson[i].introduce;
   }
 
-  function MoveOut() {
+  function MouseOut() {
     const titleName = document.getElementsByClassName("details-title");
     titleName[0].textContent = ""
     let l1 = document.getElementById("li-1");
@@ -272,8 +272,8 @@ window.onload = function () {
 
   for (let i = 0; i < itemList.length; i++) {
     let items = document.getElementsByClassName(itemList[i]);
-    items[0].addEventListener("mouseover", MoveOver.bind(this, i));
-    items[0].addEventListener("mouseout", MoveOut);
+    items[0].addEventListener("mouseover", MouseOver.bind(this, i));
+    items[0].addEventListener("mouseout", MouseOut);
   }
 
 }
