@@ -400,17 +400,17 @@ function setup() {
     frameRate(3)
     tree = new BinaryTree()
     tree.root = tree.Insert(data_list)
-    tree.Graph(tree.root, width / 2, 40, 1.6)
+    tree.Graph(tree.root, width / 2, 60, 1.6)
     input = createInput()
     input.position(220, 195)
     // tree.Draw(tree.root)
 
     // 初始化按钮
-    btns.push(new Button(25, 20, 80, 40, 'Search'))
-    btns.push(new Button(25, 20 + 50 * 1, 80, 40, 'Insert'))
-    btns.push(new Button(25, 20 + 50 * 2, 80, 40, 'Remove'))
-    btns.push(new Button(25, 20 + 50 * 3, 80, 40, 'Traversal'))
-    btns.push(new Button(25, 20 + 50 * 4, 80, 40, 'Reset'))
+    btns.push(new Button(25, 30, 80, 40, 'Search'))
+    btns.push(new Button(25, 30 + 50 * 1, 80, 40, 'Insert'))
+    btns.push(new Button(25, 30 + 50 * 2, 80, 40, 'Remove'))
+    btns.push(new Button(25, 30 + 50 * 3, 80, 40, 'Traversal'))
+    btns.push(new Button(25, 30 + 50 * 4, 80, 40, 'Reset'))
 
 }
 
