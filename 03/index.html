@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="leaf-yz">
+    <meta name="keywords" content="算法可视化">
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <title>Algorithm</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed red;
+            margin:0px 200px;
+            position: relative;
+            border-radius: 50%;
+
+            /* 让子盒子保持3d效果*/
+
+            transform-style: preserve-3d;
+
+            /*transform:rotateX(30deg) rotateY(-30deg);*/
+
+            animation: gun 8s linear infinite;
+        }
+
+        .box>div {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            position: absolute;
+            text-align: center;
+            line-height: 100px;
+            font-size: 60px;
+            color: #daa520;
+        }
+
+        .left {
+            background-color: rgba(255, 0, 0, 0.3);
+            /* 变换中心*/
+            transform-origin: left;
+            /* 变换*/
+            transform: rotateY(90deg) translateX(-50px);
+        }
+
+        .right {
+            background: rgba(0, 0, 255, 0.3);
+            transform-origin: right;
+            /* 变换*/
+            transform: rotateY(90deg) translateX(50px);
+        }
+
+        .forward {
+            background: rgba(255, 255, 0, 0.3);
+            transform: translateZ(50px);
+        }
+
+        .back {
+            background: rgba(0, 255, 255, 0.3);
+            transform: translateZ(-50px);
+        }
+
+        .up {
+            background: rgba(255, 0, 255, 0.3);
+            transform: rotateX(90deg) translateZ(50px);
+        }
+
+        .down {
+            background: rgba(99, 66, 33, 0.3);
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+
+        @keyframes gun {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="theme-container">
+        <header>
+            <div class="head">
+                <h2 align="center" color="red">算法可视化</h2>
+            </div>
+            <div class="box">
+                <div class="up">算</div>
+                <div class="down">法</div>
+                <div class="left">可</div>
+                <div class="right">视</div>
+                <div class="forward">画</div>
+                <div class="back">！</div>
+            </div>
+        </header>
+        <main>
+            <center>
+                <h2>algorithms</h2>
+                <form class="searchbar">
+                    <input class="search_" type="text" autocomplete="off" value="Search...">
+                </form>
+            </center>
+            <div class="wrapper">
+                <ul class="list">
+                    <li class="viz" class="sorting">
+                        <div class="li-wrapper">
+                            <a class="thumbnail">
+                                <img class="dynamic" src="assets/img/sorting.jpg">
+                                <img class="static" src="assets/img/sorting.gif">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Sorting</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="viz" id="bst">
+                        <div class="li-wrapper">
+                            <a class="thumbnail" href="bst.html">
+                                <img class="dynamic" src="assets/img/bst.gif">
+                                <img class="static" src="assets/img/bst.jpg">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Binary Search Tree</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="viz" id="heap">
+                        <div class="li-wrapper">
+                            <a class="thumbnail">
+                                <img class="dynamic" src="assets/img/heap.gif">
+                                <img class="static" src="assets/img/heap.jpg">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Binary Heap</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="viz" id="mst">
+                        <div class="li-wrapper">
+                            <a class="thumbnail">
+                                <img class="dynamic" src="assets/img/mst.gif">
+                                <img class="static" src="assets/img/mst.jpg">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Minimum Spanning Tree</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="viz" id="graphs">
+                        <div class="li-wrapper">
+                            <a class="thumbnail">
+                                <img class="dynamic" src="assets/img/graphs.jpg">
+                                <img class="static" src="assets/img/graphs.gif">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Graphs</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="viz" id="suffixtree">
+                        <div class="li-wrapper">
+                            <a class="thumbnail">
+                                <img class="dynamic" src="assets/img/suffixtree.gif">
+                                <img class="static" src="assets/img/suffixtree.jpg">
+                            </a>
+                            <div class="info">
+                                <h3><a href="">Suffix Tree</a></h3>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <p align="center">© 2021 By <a href="" title="" target="_blank">Leaf-yz</a>.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

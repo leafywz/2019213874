@@ -1,0 +1,108 @@
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  /*去除文字的下划线*/
+}
+
+hr {
+  color: black;
+}
+
+body {
+  background-color: lightslategray;
+  height: auto;
+  width: auto;
+}
+
+/*主体布局*/
+.theme-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto 55px;
+  grid-template-areas:
+    "h"
+    "m"
+    "f";
+  background-color: mintcream;
+  border-width: 0px;
+  border-radius: 5px;
+  border-style: solid;
+  margin: 20px;
+  height: auto;
+  width: auto;
+}
+
+header {
+  grid-area: h;
+  width: inherit;
+}
+
+main {
+  grid-area: m;
+  position: relative;
+  width: initial;
+}
+
+footer {
+  grid-area: f;
+  padding: 20px;
+  width: initial;
+}
+
+
+.wrapper {
+  margin-top: 40px;
+  margin-right: 80px;
+  margin-left: 80px;
+  height: 450px;
+}
+
+
+
+footer p {
+  color: #969599;
+}
+
+footer a {
+  color: #969599;
+}
+
+.head {
+  color: #cac9ce;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-areas: "head-left head-center head-right";
+  height: 60px;
+}
+
+.head h2 {
+  grid-area: head-center;
+  text-align: center;
+  line-height: 60px;
+  width: initial;
+}
+
+.head p {
+  grid-area: head-right;
+  text-align: left;
+  padding: 15px;
+  width: initial;
+  text-align: center;
+  line-height: 30px;
+}
+
+.head p a {
+  color: #969599;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 2px;
+  border-color: darkgray;
+  width: initial;
+}
