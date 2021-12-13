@@ -168,7 +168,7 @@ BinaryTree.prototype.Traversal = function (root) {
     }
 }
 
-// // 检查当前树是否有已被选择的节点
+// 选择节点
 BinaryTree.prototype.Select = function (root) {
     var stack = []
     if (root) stack.push(root)
@@ -201,6 +201,7 @@ BinaryTree.prototype.Select = function (root) {
     }
 }
 
+// 检查当前树是否有已被选择的节点
 BinaryTree.prototype.Check_Select = function (root) {
     var stack = []
     if (root) stack.push(root)
@@ -275,7 +276,6 @@ BinaryTree.prototype.Insert_one = function (root, value) {
         }
     }
 }
-
 
 // 查找选择中的节点
 BinaryTree.prototype.Find = function (root, item, seed = null) {
