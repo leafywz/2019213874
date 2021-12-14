@@ -107,13 +107,13 @@ BinaryTree.prototype.Graph = function (root, x, y, width) {
     root.x = cur_x
     root.y = cur_y
     if (root.left != null) {
-        cur_x = x - 220 / width + 2
-        cur_y = y + 20 * 2
+        cur_x = x - 300 / width + 2
+        cur_y = y + 25 * 2
         arguments.callee(root.left, cur_x, cur_y, cur_w)
     }
     if (root.right != null) {
-        cur_x = x + 220 / width + 2
-        cur_y = y + 20 * 2
+        cur_x = x + 300 / width + 2
+        cur_y = y + 25 * 2
         arguments.callee(root.right, cur_x, cur_y, cur_w)
     }
 }
@@ -397,7 +397,7 @@ BinaryTree.prototype.Remove = function (root, item) {
 function setup() {
     var myCanvas = createCanvas(1080, 400);
     myCanvas.parent("p5_canvas");
-    frameRate(3)
+    frameRate(60) //原数据为3
     tree = new BinaryTree()
     tree.root = tree.Insert(data_list)
     tree.Graph(tree.root, width / 2, 60, 1.6)
@@ -420,7 +420,10 @@ function draw() {
     tree.Select(tree.root)
     // 搜索节点动画
     if (flag_sr) {
-        console.log(traversal_list)
+        for (let i = 0; i < 4000000; i++) {
+            let date = new Date()
+        }
+        // console.log(traversal_list)
         if (go < traversal_list.length) {
             traversal_list[go++].ChangeColor(255, 0, 0)
         } else {
@@ -432,7 +435,6 @@ function draw() {
             flag_sr = false
         }
     }
-    console.log(node_select)
 
     // 搜索节点
     if (btns[0].clicked() && node_select) {
@@ -443,7 +445,10 @@ function draw() {
 
     //插入节点动画
     if (flag_in) {
-        tree.Graph(tree.root, width / 2, 40, 1.6)
+        for (let i = 0; i < 3000000; i++) {
+            let date = new Date()
+        }
+        tree.Graph(tree.root, width / 2, 60, 1.6)
         traversal_list = []
         flag_in = false
     }
@@ -464,7 +469,10 @@ function draw() {
 
     //删除节点动画
     if (flag_re) {
-        tree.Graph(tree.root, width / 2, 40, 1.6)
+        for (let i = 0; i < 7000000; i++) {
+            let date = new Date()
+        }
+        tree.Graph(tree.root, width / 2, 60, 1.6)
         node_select.state = 0
         node_select = null
         flag_re = false
@@ -482,9 +490,11 @@ function draw() {
         flag_re = true
     }
 
-
     //先序遍历动画
     if (flag_tr) {
+        for (let i = 0; i < 3000000; i++) {
+            let date = new Date()
+        }
         if (go < traversal_list.length) {
             traversal_list[go++].ChangeColor(255, 255, 0)
         } else {
