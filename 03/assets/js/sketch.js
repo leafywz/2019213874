@@ -4,9 +4,6 @@ var btns = [] //按钮
 var input // 键盘数字输入
 traversal_list = [] //
 
-var FPS = 10;
-var timepast = 0;
-
 var node_select = null
 
 var flag_sr = false
@@ -40,7 +37,8 @@ Button.prototype.displayBtn = function () {
 
 Button.prototype.clicked = function () {
     if (mouseIsPressed == true) {
-        if (mouseX >= this.x && mouseX <= this.x + this.width && mouseY >= this.y && mouseY <= this.y + this.heigth) {
+        if (mouseX >= this.x && mouseX <= this.x + this.width &&
+            mouseY >= this.y && mouseY <= this.y + this.heigth) {
             this.r = 255
             this.g = 100
             this.b = 100
@@ -175,7 +173,8 @@ BinaryTree.prototype.Select = function (root) {
     while (stack.length) {
         root = stack.pop() //弹出并访问当前节点
         //检测是否按下
-        if (mouseX >= root.x - root.r && mouseX <= root.x + root.r && mouseY >= root.y - root.r && mouseY <= root.y + root.r) {
+        if (mouseX >= root.x - root.r && mouseX <= root.x + root.r && 
+            mouseY >= root.y - root.r && mouseY <= root.y + root.r) {
             if (mouseIsPressed == true) {
                 if (root.state == 0) {
                     if (!tree.Check_Select(tree.root)) {
