@@ -1,16 +1,6 @@
-///////////////////////////////////////////////////
-//===============================================//
-//Floating Light v1.0 - By Shangjing Lin(Stanley)//
-//===============================================//
-///////////////////////////////////////////////////
+
 
 /*
-This work was originally inspired by Van Gogh's starry night and scraped painting.
-I have seen the dynamic starry night made by openFramework, it's wonderful and amazing.
-This is the reason why I decided to make a dynamic drawing tool.
-You can control the flow of time and create dynamic particles, 
-so it is easy to complete the amazing effect.
-
 Shortcut key:
 0-9 : Select colors.
 D : Switch between day and night.
