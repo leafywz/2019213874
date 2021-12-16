@@ -660,7 +660,6 @@ function draw() {
     //===================
     //Drawing Something
     //===================
-    tree.Draw(tree.root)
 
     // 搜索节点动画
     if (flag_sr && isPlaying) {
@@ -752,6 +751,8 @@ function draw() {
             flag_tr = false
         }
     }
+
+    tree.Draw(tree.root)
 
     //=======================
     //Cursor Icon
