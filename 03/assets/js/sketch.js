@@ -676,7 +676,7 @@ function draw() {
             textAlign(LEFT);
             textSize(15);
             fill(0);
-            text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear Press Ctrl to Save.", 10, height - 10);
+            text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear    Press Ctrl to Save.", 10, height - 10);
         }
     }
 
