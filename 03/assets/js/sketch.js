@@ -1,19 +1,3 @@
-/*
-Shortcut key:
-0-9 : Select colors.
-D : Switch between day and night.
-B : Switch the brush type.
-Space : Play/Pause.
-T : Timer tool.
-E : Eraser.
-C : Clear canvas.
-S : Save canvas to PNG file.
-L Shift: Hide the menu.
-*/
-
-// 待修改
-
-// 存在 问题 删除和增加元素的显示，需要更具体且动画时间不能过快
 
 ////////////////////////////////////////////
 //Global Variable

@@ -10,6 +10,10 @@ a {
   /*去除文字的下划线*/
 }
 
+h2{
+  color:paleturquoise;
+}
+
 hr {
   color: black;
 }
@@ -103,6 +107,7 @@ footer a {
   border-style: solid;
   border-radius: 4px;
   border-width: 2px;
-  border-color: darkgray;
+  border-color:powderblue;
   width: initial;
+  color:paleturquoise;
 }
