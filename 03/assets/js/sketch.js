@@ -843,7 +843,7 @@ function mouseClicked() {
             }
         }
     }
-    return false;
+    // return false;
 }
 
 ////////////////////////////////////////////
