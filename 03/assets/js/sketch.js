@@ -1,5 +1,3 @@
-
-
 /*
 Shortcut key:
 0-9 : Select colors.
@@ -15,6 +13,8 @@ L Shift: Hide the menu.
 
 // 待修改
 
+// 存在 问题 删除和增加元素的显示，需要更具体且动画时间不能过快
+
 ////////////////////////////////////////////
 //Global Variable
 ////////////////////////////////////////////
@@ -24,13 +24,14 @@ var FPS = 60;
 var timepast = 0;
 var speed = 5000000;
 var isPlaying = true;
-var isAcceleratoring = false;
+var isAcceleratoring = true;
 var isMenuHide = false;
 
 // node tree
 var tree
 var data_list = [19, 7, 1, 13, 9, 11, 29, 33]
 var input // 键盘数字输入
+var in_data
 traversal_list = []
 
 var node_select = null
@@ -88,7 +89,19 @@ FuncBtn.prototype.clickBtn = function () {
         speed = 5000000
         this.cmd = "accelerator";
     } else if (this.cmd == "clear") {
+        traversal_list = []
         tree.Reset(tree.root)
+        // 问题在这里
+        if(node_select!=null){
+            node_select.state = 0
+            node_select = null
+        }
+        in_data = undefined
+        go = 0
+        flag_in = false
+        flag_re = false
+        flag_sr = false
+        flag_tr = false
     } else if (this.cmd == "save") {
         saveCanvas("Painting", "png")
     } else if (this.cmd == "search") {
@@ -97,11 +110,11 @@ FuncBtn.prototype.clickBtn = function () {
             flag_sr = true
         }
     } else if (this.cmd == "insert") {
-        var in_data = input.value()
+        in_data = input.value()
         // 检查输入的数字是否合理
         if (!tree.isInTree(tree.root, in_data) && in_data != '') {
             console.log('success')
-            tree.Insert_one(tree.root, int(in_data))
+            tree.Find(tree.root, int(in_data))
             flag_in = true
         } else {
             console.log('the value is in')
@@ -109,8 +122,7 @@ FuncBtn.prototype.clickBtn = function () {
 
     } else if (this.cmd == "remove") {
         if (node_select) {
-            tree.Remove(tree.root, node_select.value)
-            console.log(traversal_list)
+            tree.Find_Re(tree.root, node_select.value)
             flag_re = true
         }
     } else if (this.cmd == "traversal") {
@@ -193,7 +205,7 @@ FuncBtn.prototype.displayBtn = function () {
         textSize(15);
         textAlign(CENTER);
         textStyle(BOLD);
-        text("remove", 0, 5);
+        text("Remove", 0, 5);
         resetMatrix();
     } else if (this.cmd == "traversal") {
         fill(0);
@@ -202,7 +214,7 @@ FuncBtn.prototype.displayBtn = function () {
         textSize(15);
         textAlign(CENTER);
         textStyle(BOLD);
-        text("traversal", 0, 5);
+        text("Traversal", 0, 5);
         resetMatrix();
     }
 }
@@ -506,8 +518,32 @@ BinaryTree.prototype.Find_P = function (root, item, seed = null) {
 
 }
 
+BinaryTree.prototype.Find_Re = function (root, item) {
+    var P = this.Find(root, item)
+    if (P == root) {
+        return
+    }
+    //要删除的节点有两个子节点
+    if (P.left != null && P.right != null) {
+        //查找右子树中最小节点
+        minP = P.right
+        traversal_list.push(minP)
+        while (minP.left != null) {
+            minP = minP.left
+            traversal_list.push(minP)
+        }
+    }
+    //要删除的节点有一个子节点
+    else if (P.left != null) {
+        traversal_list.push(P.left)
+    } else if (P.right != null) {
+        traversal_list.push(P.right)
+    }
+}
+
 // 设被删除的节点为P 其父节点为PP
 BinaryTree.prototype.Remove = function (root, item) {
+    traversal_list = []
     var P = this.Find(root, item)
     var PP = this.Find_P(root, item)
     if (P == root) {
@@ -633,13 +669,20 @@ function draw() {
             textAlign(LEFT);
             textSize(15);
             fill(0);
-            text("Floating Light v1.0 - Made By Shangjing Lin(Stanley)", 10, height - 10);
+            text("BinaryTree v1.0 - Made By Leafywz", 10, height - 10);
         } else if (timepast < 5) {
             noStroke();
             textAlign(LEFT);
             textSize(15);
             fill(0);
-            text("Press Left Shift to hide Menu, Press S to save canvas to PNG.", 10, height - 10);
+            text("Press Left Shift to hide Menu    Press S to Search    Press I to Insert    Press R to Remove    Press T to Traversal.", 10, height - 10);
+        }
+        else if (timepast < 8) {
+            noStroke();
+            textAlign(LEFT);
+            textSize(15);
+            fill(0);
+            text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear.", 10, height - 10);
         }
     }
 
@@ -683,11 +726,25 @@ function draw() {
         for (let i = 0; i < speed; i++) {
             let date = new Date()
         }
-        if (go < 3) {
-            go += 2
-        } else{
+        if (go < traversal_list.length) {
+            //下一个节点在该节点的左还是右
+            if (traversal_list[go].left == traversal_list[go + 1]) {
+                traversal_list[go].line_l = true
+            }
+            if (traversal_list[go].right == traversal_list[go + 1]) {
+                traversal_list[go].line_r = true
+            }
+            traversal_list[go].border_color = true //边框亮起
+            traversal_list[go++].ChangeColor(250, 132, 43)
+        } else if (go == traversal_list.length) {
+            tree.Insert_one(tree.root, int(in_data))
+            go += 1
+        } else {
+            tree.Reset(tree.root)
             tree.Graph(tree.root, width / 2, 60, 1.6)
             traversal_list = []
+            in_data = undefined
+            go = 0
             flag_in = false
         }
     }
@@ -697,8 +754,20 @@ function draw() {
         for (let i = 0; i < speed; i++) {
             let date = new Date()
         }
+        console.log(traversal_list)
         if (go < traversal_list.length) {
-            go += 2
+            //下一个节点在该节点的左还是右
+            if (traversal_list[go].left == traversal_list[go + 1]) {
+                traversal_list[go].line_l = true
+            }
+            if (traversal_list[go].right == traversal_list[go + 1]) {
+                traversal_list[go].line_r = true
+            }
+            traversal_list[go].border_color = true //边框亮起
+            traversal_list[go++].ChangeColor(250, 132, 43)
+        } else if (go == traversal_list.length) {
+            tree.Remove(tree.root, node_select.value)
+            go += 1
         } else {
             tree.Graph(tree.root, width / 2, 60, 1.6)
             tree.Reset(tree.root)
@@ -798,7 +867,18 @@ function keyPressed() {
     if (keyCode == 32) { //Space  暂停键
         btns[4].clickBtn();
     }
+    if (keyCode == 65) { //A  加速键
+        btns[5].clickBtn();
+    }
+    if (keyCode == 67) { //C  清除键
+        btns[6].clickBtn();
+    }
     if (keyCode == 16) { //Shift L 工具栏
+        if(!isMenuHide){
+            input.hide()
+        }else{
+            input.show()
+        }
         isMenuHide = !isMenuHide;
     }
 }
