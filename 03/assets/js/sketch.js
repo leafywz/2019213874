@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////
 //Global Variable
 ////////////////////////////////////////////
@@ -76,7 +75,7 @@ FuncBtn.prototype.clickBtn = function () {
         traversal_list = []
         tree.Reset(tree.root)
         // 问题在这里
-        if(node_select!=null){
+        if (node_select != null) {
             node_select.state = 0
             node_select = null
         }
@@ -89,29 +88,41 @@ FuncBtn.prototype.clickBtn = function () {
     } else if (this.cmd == "save") {
         saveCanvas("Painting", "png")
     } else if (this.cmd == "search") {
-        if (node_select) {
-            tree.Find(tree.root, node_select.value)
-            flag_sr = true
-        }
-    } else if (this.cmd == "insert") {
-        in_data = input.value()
-        // 检查输入的数字是否合理
-        if (!tree.isInTree(tree.root, in_data) && in_data != '') {
-            console.log('success')
-            tree.Find(tree.root, int(in_data))
-            flag_in = true
-        } else {
-            console.log('the value is in')
+        if (!flag_re && !flag_in && !flag_tr) {
+            if (node_select) {
+                tree.Find(tree.root, node_select.value)
+                flag_sr = true
+            }
         }
 
-    } else if (this.cmd == "remove") {
-        if (node_select) {
-            tree.Find_Re(tree.root, node_select.value)
-            flag_re = true
+    } else if (this.cmd == "insert") {
+        if (!flag_re && !flag_sr && !flag_tr) {
+            in_data = input.value()
+            // 检查输入的数字是否合理
+            if (!tree.isInTree(tree.root, in_data) && in_data != '') {
+                console.log('success')
+                tree.Find(tree.root, int(in_data))
+                flag_in = true
+            } else {
+                console.log('the value is in')
+            }
         }
+
+
+    } else if (this.cmd == "remove") {
+        if (!flag_sr && !flag_in && !flag_tr) {
+            if (node_select) {
+                tree.Find_Re(tree.root, node_select.value)
+                flag_re = true
+            }
+        }
+
     } else if (this.cmd == "traversal") {
-        tree.Traversal(tree.root)
-        flag_tr = true
+        if (!flag_re && !flag_in && !flag_sr) {
+            tree.Traversal(tree.root)
+            flag_tr = true
+        }
+
     }
 }
 
@@ -660,13 +671,12 @@ function draw() {
             textSize(15);
             fill(0);
             text("Press Left Shift to hide Menu    Press S to Search    Press I to Insert    Press R to Remove    Press T to Traversal.", 10, height - 10);
-        }
-        else if (timepast < 8) {
+        } else if (timepast < 8) {
             noStroke();
             textAlign(LEFT);
             textSize(15);
             fill(0);
-            text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear.", 10, height - 10);
+            text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear Press Ctrl to Save.", 10, height - 10);
         }
     }
 
@@ -857,10 +867,13 @@ function keyPressed() {
     if (keyCode == 67) { //C  清除键
         btns[6].clickBtn();
     }
+    if (key == 'Control') { //ctrl 保存
+        btns[7].clickBtn();
+    }
     if (keyCode == 16) { //Shift L 工具栏
-        if(!isMenuHide){
+        if (!isMenuHide) {
             input.hide()
-        }else{
+        } else {
             input.show()
         }
         isMenuHide = !isMenuHide;
