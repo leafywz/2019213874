@@ -48,7 +48,7 @@ FuncBtn.prototype.isMouseInBtn = function () {
     }
 }
 
-// 点击后的时间响应
+// 点击后的事件响应
 FuncBtn.prototype.clickBtn = function () {
     print("ClickBtn!");
     if (this.cmd == "pause") {
@@ -212,8 +212,6 @@ FuncBtn.prototype.displayBtn = function () {
 ////////////////////////////////////////////
 //Node 
 ////////////////////////////////////////////
-
-
 function Node(value, left, right) {
     this.value = value
     this.left = left
@@ -278,7 +276,6 @@ Node.prototype.Draw = function () {
 ////////////////////////////////////////////
 //Tree 
 ////////////////////////////////////////////
-
 function BinaryTree() {
     this.root = null
 }
@@ -673,7 +670,6 @@ function draw() {
             text("Press Space to Stop/Run   Press A to Accelerator/Decelerate    Press C to Clear    Press Ctrl to Save.", 10, height - 10);
         }
     }
-
 
     // 检查当前是否右节点被选中
     tree.Select(tree.root)
