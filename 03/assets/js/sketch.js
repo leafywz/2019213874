@@ -1,7 +1,6 @@
 ////////////////////////////////////////////
 //Global Variable
 ////////////////////////////////////////////
-var objs = [];
 var btns = [];
 var FPS = 60;
 var timepast = 0;
@@ -53,15 +52,9 @@ FuncBtn.prototype.clickBtn = function () {
     print("ClickBtn!");
     if (this.cmd == "pause") {
         isPlaying = false;
-        for (var i = 0; i < objs.length; i++) {
-            objs[i].isPlaying = false;
-        }
         this.cmd = "play";
     } else if (this.cmd == "play") {
         isPlaying = true;
-        for (var i = 0; i < objs.length; i++) {
-            objs[i].isPlaying = true;
-        }
         this.cmd = "pause";
     } else if (this.cmd == "accelerator") {
         isAcceleratoring = true
