@@ -2,28 +2,29 @@
 //Global Variable
 ////////////////////////////////////////////
 var btns = [];
-var FPS = 60;
+var FPS = 60; //帧数
 var timepast = 0;
-var speed = 5000000;
-var isPlaying = true;
-var isAcceleratoring = true;
-var isMenuHide = false;
+var speed = 5000000; //速度
+var isPlaying = true; //运行 标志
+var isAcceleratoring = true; // 加速 标志
+var isMenuHide = false; // 菜单栏隐藏 标志
 
 // node tree
 var tree
+// 初始节点数据
 var data_list = [19, 7, 1, 13, 9, 11, 29, 33]
 var input // 键盘数字输入
-var in_data
-traversal_list = []
+var in_data // 输入的数字
+traversal_list = [] // 遍历节点存储数组
 
 var node_select = null
 
-var flag_sr = false
-var flag_in = false
-var flag_re = false
-var flag_tr = false
+var flag_sr = false  // 查找 标志
+var flag_in = false  // 插入 标志
+var flag_re = false  // 删除 标志
+var flag_tr = false  // 先序遍历 标志
 
-var go = 0
+var go = 0 // 显示节点下标
 
 
 ////////////////////////////////////////////
