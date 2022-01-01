@@ -299,6 +299,7 @@ BinaryTree.prototype.Graph = function (root, x, y, width) {
     }
 }
 
+// 清除操作
 BinaryTree.prototype.Reset = function (root) {
     root.ChangeColor(255, 255, 255)
     root.line_l = false
@@ -314,6 +315,7 @@ BinaryTree.prototype.Reset = function (root) {
     }
 }
 
+// 绘制树
 BinaryTree.prototype.Draw = function (root) {
     root.Draw()
     if (root.right != null) {
@@ -324,6 +326,7 @@ BinaryTree.prototype.Draw = function (root) {
     }
 }
 
+// 判断节点是否在树中
 BinaryTree.prototype.isInTree = function (root, value) {
     var stack = []
     if (root) stack.push(root)
@@ -407,7 +410,6 @@ BinaryTree.prototype.Check_Select = function (root) {
     return false
 }
 
-
 // 初始化是 插入节点列表
 BinaryTree.prototype.Insert = function (seq) {
     if (this.root == null) {
@@ -437,6 +439,7 @@ BinaryTree.prototype.Insert = function (seq) {
     return this.root
 }
 
+// 插入一个节点
 BinaryTree.prototype.Insert_one = function (root, value) {
     node = new Node(value, null, null)
     node.x = 900
@@ -483,6 +486,7 @@ BinaryTree.prototype.Find = function (root, item, seed = null) {
     }
 }
 
+// 查找选中节点的父节点
 BinaryTree.prototype.Find_P = function (root, item, seed = null) {
     if (seed == null) {
         node = root
@@ -504,6 +508,7 @@ BinaryTree.prototype.Find_P = function (root, item, seed = null) {
 
 }
 
+// 查找要选中的节点以及删除操作相关的节点
 BinaryTree.prototype.Find_Re = function (root, item) {
     var P = this.Find(root, item)
     if (P == root) {
